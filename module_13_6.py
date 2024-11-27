@@ -5,7 +5,7 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import asyncio
 
-api = '7201079216:AAGijMIsykxlS74Osg113pM0mFLkBVyn9Wo'
+api = ' '
 bot = Bot(token=api)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
@@ -61,24 +61,6 @@ async def set_weight(message, state):
     await message.answer('Введите свой вес(кг):')
     await UserState.weight.set()
 
-# @dp.message_handler(state=UserState.weight)
-# async def set_gender(message, state):
-#     await state.update_data(weight=message.text)
-#     await message.answer('Введите свой пол(муж/жен):')
-#     await UserState.gender.set()
-#
-# @dp.message_handler(state=UserState.gender)
-# async def send_calories(message, state):
-#     await state.update_data(gender=message.text)
-#     data = await state.get_data()
-#     if state.update_data(gender='муж'):
-#         norma_1 = (10 * int(data['weight']) + 6.25 * int(data['growth']) - 5 * int(data['age']) + 5)  # для мужчин
-#         await message.answer(f'Ваша норма колорий:\n {norma_1} ккал')
-#       #await state.finish()
-#     else:
-#         norma_2 = (10 * int(data['weight']) + 6.25 * int(data['growth']) - 5 * int(data['age']) - 161)  # для женщин
-#         await message.answer(f'Ваша норма колорий: {norma_2} ккал')
-#     await state.finish()
 
 @dp.message_handler(state=UserState.weight)
 async def send_calories(message, state):
